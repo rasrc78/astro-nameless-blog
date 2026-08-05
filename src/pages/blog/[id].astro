@@ -1,0 +1,39 @@
+---
+import '../../styles/globle.css'
+import '../../styles/blog.css'
+import { SITE_CONFIG } from '../../site.config'
+import Header from '../../components/Header.astro'
+import Footer from '../../components/Footer.astro'
+
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+    const posts = await getCollection('blog')
+    return posts.map(post => ({
+        params: { id: post.id },
+        props: { post },
+    }))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+---
+<!DOCTYPE html>
+<html lang="en" data-theme={ SITE_CONFIG.defaultTheme }>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content={Astro.generator} />
+    <title>{`${post.data.title}${SITE_CONFIG.suffix ? ' - ' + SITE_CONFIG.title : ''}`}</title>
+</head>
+<body>
+    <div class="page">
+        <Header />
+        <main class="main">
+            <h1>{post.data.title}</h1>
+            <Content />
+        </main>
+        <Footer />
+    </div>
+</body>
+</html>
