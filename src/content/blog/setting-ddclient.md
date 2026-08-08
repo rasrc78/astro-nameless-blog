@@ -1,7 +1,7 @@
 ---
-title: 记录一次使用 ddclient 进行 DDNS 更新
-desciption: 简单介绍了在 debian 系统中安装 ddclient，并为托管在 Cloudflare 的域名配置 DDNS。
-pubDate: 2026-07-11
+title: '记录一次使用 ddclient 进行 DDNS 更新'
+description: '简单介绍了在 debian 系统中安装 ddclient，并为托管在 Cloudflare 的域名配置 DDNS。'
+pubDate: '2026-07-11'
 ---
 
 ## 安装
