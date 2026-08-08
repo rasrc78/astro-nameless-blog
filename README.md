@@ -22,6 +22,8 @@
 其他：
 
 - /pubilc/favicon.ico: 网站图标
+- /content/blog: 博客放这里，支持Markdown
+- /content/about.md: 关于页放这里，同上
 
 ## 不足
 
