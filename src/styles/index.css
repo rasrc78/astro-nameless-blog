@@ -1,0 +1,18 @@
+:root {
+    --nav-height: 2em;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.main {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 2em;
+    flex: 1;
+}

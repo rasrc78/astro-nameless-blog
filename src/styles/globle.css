@@ -9,8 +9,7 @@
     --color-primary-500: hsl(220, 50%, 60%);
     --color-primary-600: hsl(220, 50%, 50%);
     --color-accent-500: hsl(0, 50%, 60%);
-    --color-green-500: hsl(110, 50%, 60%);
-    --nav-height: 2rem;
+    --color-green-500: hsl(110, 50%, 60%);  /* i dont know what it is used for */
 }
 
 *, *::after, *::before {
@@ -55,40 +54,44 @@ a:hover {
 hr {
     margin: 1em auto;
     width: 90%;
-    height: 0.1rem;
+    height: 0.1em;
     border: none;
     background-color: var(--color-bg-400);
 }
 
 ul, ol {
-    margin-left: 1rem;
+    margin-left: 1em;
 }
 
 table, pre {
-    margin: 0.5rem auto;
+    margin: 0.5em auto;
 }
 
 th, td, pre {
-    padding: 0.5rem;
+    padding: 0.5em;
 }
 
 code:not(.astro-code code), pre {
-    border-radius: 0.2rem;
+    border-radius: 0.2em;
 }
 
 code:not(.astro-code code) {
     font-size: inherit;
     font-family: monospace, monospace;  /* 修复默认的font-size缩放行为 */
     background-color: var(--color-bg-600);
-    padding: 0.1rem 0.2rem;
+    padding: 0.1em 0.2em;
 }
 
+pre {
+    max-width: 100%;
+    overflow-x: auto;
+}
 
 table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
-    border: 2px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--color-bg-600);
 }
 
 thead th {
@@ -104,5 +107,5 @@ th, td {
 }
 
 th + th, td + td {
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 1px solid var(--color-bg-600);
 }

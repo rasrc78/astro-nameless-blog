@@ -1,79 +1,66 @@
 ---
-import 'normalize.css'
-import '../styles/globle.css'
-import '../styles/blog.css'
-import { SITE_CONFIG } from '../site.config.ts'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
+import Base from '../components/Base.astro'
 
 import { getCollection } from 'astro:content'
 import { getSummary } from '../components/getSummary.mjs'
+import { SITE_CONFIG } from '../site.config'
 
 const posts = await getCollection('blog')
-
 ---
 
-<html lang="en" data-theme={SITE_CONFIG.defaultTheme}>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{SITE_CONFIG.title}</title>
-        <style>
-            .post-inner {
-                display: block;
-                word-break: break-word;
-            }
+<Base title={ SITE_CONFIG.title }>
+    <main class="main">
+        <ul class="post-wrapper">
+            {posts.map(post => (
+                <li class="post-inner">
+                    <div class="post-meta">
+                        <h2 class="post-title"><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>
+                        <span class="post-pubdate">{post.data.pubDate.toLocaleDateString()}</span>
+                    </div>
+                    <p class="post-summary">{getSummary(post, 500)}</p>
+                </li>
+            ))}
+        </ul>
+    </main>
+</Base>
 
-            .post-inner + .post-inner {
-                margin-top: 2rem;
-            }
+<style>
+    .post-wrapper {
+        margin: 0 1rem;
+    }
 
-            .post-meta{
-                display: flex;
-                align-items: baseline;
-            }
+    .post-inner {
+        display: block;
+        word-break: break-word;
+    }
 
-            .post-title {
-                margin-right: 1rem;
-            }
+    .post-inner + .post-inner {
+        margin-top: 2rem;
+    }
 
-            /* .post-title::after {
-                content: '·';
-                font-size: 1rem;
-                color: var(--color-bg-400);
-                margin: 0 0.5rem;
-                opacity: 0.5;
-            } */
+    .post-meta{
+        display: flex;
+        align-items: baseline;
+    }
 
-            .post-pubdate {
-                color: var(--color-bg-400);
-            }
+    .post-title {
+        margin-right: 1rem;
+    }
 
-            .post-summary {
-                white-space: pre-line;
-                margin-left: 0.1rem;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="page">
-            <Header />
-            <main class="main">
-                <ul class="post-wrapper">
-                    {posts.map(post => (
-                        <li class="post-inner">
-                            <div class="post-meta">
-                                <h2 class="post-title"><a href={`/blog/${post.id}`}>{post.data.title}</a></h2>
-                                <span class="post-pubdate">{post.data.pubDate.toLocaleDateString()}</span>
-                            </div>
-                            <p class="post-summary">{getSummary(post, 500)}</p>
-                        </li>
-                    ))}
-                </ul>
-            </main>
-            <Footer />
-        </div>
-    </body>
-</html>
+    /* .post-title::after {
+        content: '·';
+        font-size: 1rem;
+        color: var(--color-bg-400);
+        margin: 0 0.5rem;
+        opacity: 0.5;
+    } */
 
+    .post-pubdate {
+        color: var(--color-bg-400);
+    }
+
+    .post-summary {
+        white-space: pre-line;
+        margin-left: 0.1rem;
+    }
+</style>

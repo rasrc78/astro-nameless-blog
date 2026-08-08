@@ -1,9 +1,0 @@
-.page {
-    min-width: 200px;
-}
-.main {
-    max-width: 700px;
-    min-height: calc(100% - var(--nav-height));
-    margin: 0 auto;
-    margin-top: 2rem;
-}

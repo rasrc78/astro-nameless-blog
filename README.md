@@ -1,17 +1,33 @@
 # NamelessBlog
 
-鸽了一个月，实际工作三天。还有许多地方没完善，等大致完工后再来写README。
+个人博客，基于 [Astro](https://astro.build/) 框架编写。
 
-发现自己对平面设计一窍不通，可怜的审美。想出来的许多设计，做出来后感觉好丑。还是滚回后端吧。
+## 基本配置
 
-名字是真的想不出来......
+主要可修改的配置存储在 `/src/site.config.ts` 内：
 
-## 待办列表
+- title: 网站标题
+- description: 网站描述，只用于`<meta>`标签
+- copyright: 网站底部版权，可使用html填写
+- defaultTheme: 默认配色主题，虽然目前只写了`dark`
+- titleSuffix: 是否在文章标题后加上网站标题
+- postAppendTitle: 是否默认在文章开头添加frontmatter内的标题
 
-- [ ] 适配移动端
-- [ ] Footer
-- [ ] Archive页
-- [ ] RSS订阅
-- [ ] About页
-- [ ] 重构代码
+文章frontmatter支持的属性：
 
+- title：文章标题
+- description: 文章摘要或描述
+- pubDate: 文章发布日期，推荐使用ISO 8601格式或时间戳
+
+其他：
+
+- /pubilc/favicon.ico: 网站图标
+
+## 不足
+
+- 网站设计很烂，或者说好听点叫简洁
+- 对Typescript不熟悉，所以基本都用Javascript编写脚本，很多ts的类型错误没处理
+
+------
+
+也只有我一人用，所以README就随便写写吧。

@@ -1,0 +1,13 @@
+---
+import Base from "./Base.astro"
+import { SITE_CONFIG } from "../site.config"
+
+const { title, contentComponent: Content, isAppendTitle = SITE_CONFIG.titleSuffix } = Astro.props
+---
+
+<Base title={`${title}${SITE_CONFIG.titleSuffix ? ` - ${SITE_CONFIG.title}` : ''}`}>
+        <main class="main">
+            { isAppendTitle ? <h1>{title}</h1> : '' }
+            <Content />
+        </main>
+</Base>
