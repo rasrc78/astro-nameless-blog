@@ -21,7 +21,7 @@ const months = [...new Set(
                         return postDate.getFullYear() === month[0] && postDate.getMonth() === month[1]
                     }).map(post => (
                     <li class="archive">
-                        <a href={"/post/" + post.id} class="archive-title">{post.data.title}</a>
+                        <a href={"/blog/" + post.id} class="archive-title">{post.data.title}</a>
                     </li>))}
                 </ul>
             </li>))}
