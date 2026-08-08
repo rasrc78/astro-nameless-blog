@@ -27,4 +27,4 @@ pnpm-debug.log*
 .vscode/
 
 # test contents
-content/
+test-*.md
