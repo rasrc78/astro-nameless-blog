@@ -26,5 +26,5 @@ pnpm-debug.log*
 # vscode settings
 .vscode/
 
-# test contents
-content/
+# test post
+test-*.md
