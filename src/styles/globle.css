@@ -110,27 +110,3 @@ th + th, td + td {
     border-left: 1px solid var(--color-bg-600);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-}
-
-/**
-  /// title separetor ///
-*/
-
-h1, h2 {
-    position: relative;
-}
-
-h1::after, h2::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    margin: 0 auto;
-    border: none;
-    background-color: var(--color-bg-400);
-}
