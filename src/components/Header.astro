@@ -171,31 +171,30 @@ const title = SITE_CONFIG.title
 </style>
 
 <script>
-    const navbar = document.querySelector('.nav')
-    const burgerMenu = document.querySelector('.nav-wrapper')
-    const menuToggle = document.querySelector('#menu-toggle')
-    // const navbarHeight = +window.getComputedStyle(navbar).height
+    const navbar = document.querySelector('.nav') as HTMLElement
+    const burgerMenu = document.querySelector('.nav-wrapper') as HTMLElement
+    const menuToggle = document.querySelector('#menu-toggle') as HTMLElement
     let prevScrollOff = window.scrollY
     let currentScrollOff = window.scrollY
     let isScroll = false
-    let burgerMenuActive = burgerMenu?.classList.contains('is-expand')
+    let burgerMenuActive = burgerMenu.classList.contains('is-expand')
 
     if (navbar) {
-        window.onscroll = function() {
+        window.addEventListener('scroll', function() {
             if (!isScroll) {
                 isScroll = true
                 window.requestAnimationFrame(autoHideNavbar)
             }
-        }
-        menuToggle?.addEventListener('click', toggleMenu)
+        })
+        menuToggle.addEventListener('click', toggleMenu)
     }
 
     function autoHideNavbar() {
         currentScrollOff = window.scrollY
         if (prevScrollOff > currentScrollOff ) {
-            navbar?.classList.remove('is-hide')
+            navbar.classList.remove('is-hide')
         } else {
-            navbar?.classList.add('is-hide')
+            navbar.classList.add('is-hide')
             if (burgerMenuActive) {
                 toggleMenu()
             }
@@ -206,12 +205,12 @@ const title = SITE_CONFIG.title
 
     function toggleMenu()  {
         if (burgerMenuActive) {
-            burgerMenu?.classList.remove('is-expand')
-            menuToggle?.classList.remove('is-active')
+            burgerMenu.classList.remove('is-expand')
+            menuToggle.classList.remove('is-active')
             burgerMenuActive = false
         } else {
-            burgerMenu?.classList.add('is-expand')
-            menuToggle?.classList.add('is-active')
+            burgerMenu.classList.add('is-expand')
+            menuToggle.classList.add('is-active')
             burgerMenuActive = true
         }
     }

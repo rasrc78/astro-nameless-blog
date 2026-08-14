@@ -55,16 +55,16 @@
     let currentScrollOff = window.scrollY
     let isScroll = false
 
-    window.onscroll = function() {
+    window.addEventListener('scroll', function() {
         if (!isScroll) {
             isScroll = true
             window.requestAnimationFrame(autoHideTopBotton)
         }
-    }
+    })
 
     topBotton.onclick = function() {
         document.documentElement.scrollTo({
-            top: 100,
+            top: 0,
             behavior: 'smooth',
         })
     }
