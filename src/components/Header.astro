@@ -11,7 +11,7 @@ const title = SITE_CONFIG.title
             <div class="site-title"><a href="/">{title}</a></div>
         }
         <button id="menu-toggle">
-            <svg class="burger-icon" viewBox="0 0 24 24" width="32" height="32">
+            <svg class="burger-icon" viewBox="0 0 24 24">
                 <line class="line line-top" x1="3" y1="6" x2="21" y2="6" />
                 <line class="line line-middle" x1="3" y1="12" x2="21" y2="12" />
                 <line class="line line-bottom" x1="3" y1="18" x2="21" y2="18" />
@@ -35,6 +35,7 @@ const title = SITE_CONFIG.title
         position: fixed;
         height: var(--nav-height);
         width: 100%;
+        z-index: 1;
         height: var(--nav-height);
         background-color: var(--color-bg-600);
         box-shadow: 0px -0.9rem 0.2rem 1rem var(--color-bg-600);
@@ -120,6 +121,11 @@ const title = SITE_CONFIG.title
         z-index: 2;
     }
 
+    .burger-icon {
+        width: 2em;
+        height: 2em;
+    }
+
     .burger-icon .line {
         stroke: var(--color-bg-400);
         stroke-width: 2;
@@ -174,13 +180,15 @@ const title = SITE_CONFIG.title
     let isScroll = false
     let burgerMenuActive = burgerMenu?.classList.contains('is-expand')
 
-    window.onscroll = function() {
-        if (!isScroll && navbar) {
-            isScroll = true
-            window.requestAnimationFrame(autoHideNavbar)
+    if (navbar) {
+        window.onscroll = function() {
+            if (!isScroll) {
+                isScroll = true
+                window.requestAnimationFrame(autoHideNavbar)
+            }
         }
+        menuToggle?.addEventListener('click', toggleMenu)
     }
-    menuToggle?.addEventListener('click', toggleMenu)
 
     function autoHideNavbar() {
         currentScrollOff = window.scrollY
@@ -195,6 +203,7 @@ const title = SITE_CONFIG.title
         isScroll = false
         prevScrollOff = currentScrollOff
     }
+
     function toggleMenu()  {
         if (burgerMenuActive) {
             burgerMenu?.classList.remove('is-expand')

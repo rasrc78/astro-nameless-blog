@@ -4,9 +4,9 @@ import { getCollection } from "astro:content"
 
 const posts = await getCollection('blog')
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-const months = [...new Set(
+const months: [number, number][] = [...new Set(
     sortedPosts.map(post => JSON.stringify([post.data.pubDate.getFullYear(), post.data.pubDate.getMonth()]))
-)].map(month => JSON.parse(month))
+)].map(month => JSON.parse(month) as [number, number])
 ---
 
 <Base title="Archives" isAppendTitle={ false }>
